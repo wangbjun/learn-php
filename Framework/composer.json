@@ -1,0 +1,17 @@
+{
+  "name": "jwang/php-learning",
+  "authors": [
+    {
+      "name": "wangbenjun",
+      "email": "wangbenjun@gsfa.com"
+    }
+  ],
+  "autoload": {
+    "classmap": [
+      "./"
+    ]
+  },
+  "require": {
+    "symfony/finder": "^4.0"
+  }
+}

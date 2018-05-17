@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-2.2.3.min.js"></script>
+</head>
+<body>
+<ul id="ul-test">
+    <li>0</li>
+    <li>1</li>
+    <li>
+        <a href="">点击2</a>
+    </li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+</ul>
+</body>
+<script type="text/javascript">
+    //原生写法
+    // var oUl = document.getElementById("ul-test");
+    // oUl.addEventListener("click", function (ev) {
+    //     ev = ev || window.event;
+    //     var target = ev.target || ev.srcElement;
+    //     if (target.tagName.toLowerCase() === 'a') {
+    //         alert(target.innerHTML)
+    //     }
+    // });
+
+    //Jquery写法
+    $("#ul-test").on('click', 'li', function () {
+        alert(this.innerText);
+    });
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    var arr = [1, 2, 3, 1.4, null, true];
+    arr[1] = 22;
+    arr[10] = 'A';
+//    var length = arr.length;
+//    alert(length);
+//    for(var i=0;i<length;i++) {
+//        alert(arr[i]);
+//    }
+//    var res = arr.indexOf("B");
+//    alert(res);
+    var new_arr = arr.map(function (x) {
+        return x * x;
+    });
+    show_arr(new_arr);
+//    var new_arr = arr.slice();
+//    arr.push(85);
+//    arr.push(85);
+//    arr.push(85);
+//    arr.pop();
+//    arr.unshift(99);
+//    arr.unshift(99);
+//    arr.unshift(99);
+//    arr.shift();
+//    arr.sort();
+//    arr.reverse();
+//    arr.splice(2,1,'A','B','C');
+//    var new_arr = [1, 8, 7, 'D', arr];
+//    var res = arr.concat(1,2,new_arr);
+//    var new_arr = [[1, 2, 3], [400, 500, 600], '-'];
+//    var res = new_arr[1][1];
+//    show_arr(res);
+//    console.log(res);
+    function show_arr(arr) {
+        for (var key in arr) {
+            alert(arr[key]);
+        }
+    }
+</script>
+</body>
+</html>

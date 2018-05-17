@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>传参</title>
+    <script src="../../../js/jquery-2.2.3.min.js"></script>
+</head>
+<body>
+<form action="backend.php" method="post">
+    <label for="name">姓名:</label>
+    <input type="text" id="name" name="name">
+    <label for="name">年龄:</label>
+    <input type="text" id="age" name="age">
+    <input type="checkbox" name="like[]" value="1">
+    <input type="checkbox" name="like[]" value="2">
+    <input type="checkbox" name="like[]" value="3">
+    <input type="submit" value="提交">
+</form>
+</body>
+<script type="application/javascript">
+    $(function () {
+        var data = {
+            'name': 'Jun',
+            'age': 15,
+        };
+        $.ajax({
+            type: 'POST',
+            url: "backend.php",
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var Student = {
+        name : 'Robot',
+        height : 1.75,
+        weight : 60,
+        run : function () {
+            console.log('name = ' + this.name + ',height = ' + this.height);
+        }
+    };
+
+    var xiaoming = {
+        name : 'XiaoMing',
+        height : 1.85,
+    };
+
+    xiaoming.__proto__ = Student;
+    xiaoming.run();
+</script>
+</body>
+</html>

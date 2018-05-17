@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="test-register" action="#" target="_blank" onsubmit="return checkRegisterForm()">
+    <p id="test-error" style="color:red"></p>
+    <p>
+        用户名: <input type="text" id="username" name="username">
+    </p>
+    <p>
+        口令: <input type="password" id="password" name="password">
+    </p>
+    <p>
+        重复口令: <input type="password" id="password-2">
+    </p>
+    <p>
+        <button type="submit">提交</button> <button type="reset">重置</button>
+    </p>
+</form>
+</body>
+<script>
+    function checkRegisterForm() {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var password_repeat = document.getElementById('password-2').value;
+        var error = document.getElementById('test-error');
+        var reg_name = /^[A-Z0-9a-z]{3,10}$/;
+        var reg_pass = /^\S{6,20}$/;
+        if (!reg_name.test(username)) {
+            error.innerHTML = '用户名不正确';
+            return false;
+        }
+        if (!reg_pass.test(password)) {
+            error.innerHTML = '密码不正确';
+            return false;
+        }
+        if (password !== password_repeat ) {
+            error.innerHTML = '两次密码输入不一致';
+            return false;
+        }
+        return true;
+    }
+</script>
+</html>

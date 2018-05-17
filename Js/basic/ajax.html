@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="test-response-text"></p>
+<script>
+function success(text) {
+    var textarea = document.getElementById('test-response-text');
+    textarea.innerHTML = text;
+}
+
+function error(code) {
+    var textarea = document.getElementById('test-response-text');
+    textarea.innerHTML = code;
+}
+
+var request = new XMLHttpRequest();
+request.onreadystatechange = function () {
+    if (request.readyState === 4){
+        if (request.status === 200){
+            return success(request.responseText);
+        } else {
+            return error(request.responseText);
+        }
+    } else {
+        alert('等待相应...');
+    }
+}
+request.open('GET', "http://www.liaoxuefeng.com/api/categories");
+request.send();
+</script>
+</body>
+</html>

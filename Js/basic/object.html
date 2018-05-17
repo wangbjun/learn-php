@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    var xiaoming = {
+        name : '小明',
+        birthday : 19911125,
+        school : '雷锋小学',
+        age : 25,
+        height : 1.75,
+        weight : 65,
+        score : 85,
+        'from' : 'AnHui',
+        getAge : function () {
+            var res = this.age + 1;
+            alert(res);
+        }
+    };
+    alert(xiaoming['name']);
+    alert(xiaoming.birthday);
+    alert(xiaoming.from);
+    xiaoming.come = 'HeBei';
+    alert(xiaoming.come);
+    xiaoming.getAge();
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="jquery.cookie.js"></script>
+</head>
+<body>
+    <script>
+        $.cookie('PHPSESSID', 'pd15qpe1moqrkvj74smokcelt7');
+        $(function () {
+            $.ajax({
+                'url': 'http://demo.com/Php/Cookies/do.php',
+                'dataType': 'JSON',
+                'type': 'GET',
+                'data': {
+                    'id':34
+                }
+            })
+        });
+    </script>
+</body>
+</html>

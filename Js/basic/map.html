@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let m = new Map(); // 空Map
+    m.set('Adam', 67); // 添加新的key-value
+    m.set('Bob', 59);
+    m.has('Adam'); // 是否存在key 'Adam': true
+    alert(m.get('Adam')); // 67
+
+    let s = new Set();
+    s.add([1,2,3,3,4,5]);
+    s.forEach(function (key) {
+        alert(key);
+    })
+</script>
+</body>
+</html>

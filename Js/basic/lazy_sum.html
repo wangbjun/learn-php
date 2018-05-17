@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function lazy_sum(arr) {
+        var sum = function sum() {
+            return arr.reduce(function (x,y) {
+                return x+y;
+            })
+        };
+        return sum;
+    }
+    var f = lazy_sum([1,2,3,4,5]);
+    alert(f());
+</script>
+</body>
+</html>

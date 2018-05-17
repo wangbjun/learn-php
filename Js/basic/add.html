@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+function fn(num) {
+    return num*num;
+}
+function once(func) {
+    var flag = true;
+    window.result;
+    return function () {
+        if (flag){
+            result = func.apply(this, arguments);
+            flag = false;
+            return result;
+        }else {
+            return result;
+        }
+    }
+}
+g = once(fn);
+console.log(g(2));
+console.log(g(3));
+</script>
+</body>
+</html>

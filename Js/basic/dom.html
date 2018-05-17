@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="list">
+    <p id="java">Java</p>
+    <p id="python">Python</p>
+    <p id="scheme">Scheme</p>
+</div>
+<ol id="test-list">
+    <li class="lang">Scheme</li>
+    <li class="lang">JavaScript</li>
+    <li class="lang">Python</li>
+    <li class="lang">Ruby</li>
+    <li class="lang">Haskell</li>
+</ol>
+<ul id="test-list-two">
+    <li>JavaScript</li>
+    <li>Swift</li>
+    <li>HTML</li>
+    <li>ANSI C</li>
+    <li>CSS</li>
+    <li>DirectX</li>
+</ul>
+<script>
+    var list = document.getElementById('list');
+    var list_python = document.getElementById('java');
+    var p = document.createElement('p');
+    p.setAttribute('id', 'JavaScript');
+    p.innerHTML = 'JavaScript';
+    list.insertBefore(p, list_python);
+    list.appendChild(p);
+</script>
+<!--<script>-->
+    <!--var list = document.querySelector('#test-list');-->
+    <!--var arr = Array.from(list.children);-->
+
+    <!--arr.sort(function(x ,y){-->
+        <!--return x.innerHTML > y.innerHTML ? true : false-->
+    <!--});-->
+
+    <!--arr.forEach(function(e){-->
+        <!--list.appendChild(e);-->
+    <!--});-->
+<!--</script>-->
+<script>
+//    var java = document.getElementById('java');
+//    var p_java = java.parentElement;
+//    var removed = p_java.removeChild(java);
+//    alert(removed);
+    var test = document.getElementById('test-list-two');
+    for(var item of Array.from(test.children)){
+      var t = item.innerText;
+      if (t !== 'JavaScript' && t !== 'HTML' && t !== 'CSS') {
+          test.removeChild(item);
+      }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="application/javascript" src="../jquery-2.2.3.min.js"></script>
+    <script type="application/javascript" src="../template-web.js"></script>
+    <script type="application/javascript" src="../pagination.js"></script>
+    <link href="http://pagination.js.org/dist/2.1.0/pagination.css" rel="stylesheet">
+</head>
+<body>
+    <div id="data-container"></div>
+    <br>
+    <div id="demo"></div>
+</body>
+<script id="tpl-user" type="text/html">
+    <ul>
+    {{each list value index}}
+    <li>
+        id: {{value.room_id}}
+        name: {{value.name}}
+        username: {{value.username}}
+    </li>
+    {{/each}}
+    </ul>
+</script>
+<script type="application/javascript">
+    $('#demo').pagination({
+        dataSource: 'http://af.com/index.php/App/Room/getRoomList',
+        //定位请求资源
+        locator: 'value.room_list',
+        pageNumber: 1,
+        totalNumberLocator: function(response) {
+            //计算页数
+            return response.value.count;
+        },
+        pageSize: 5,
+        //自定义请求参数别名
+        alias: {
+            pageNumber: 'page',
+            pageSize: 'page_num'
+        },
+        //请求事件
+        ajax: {
+            beforeSend: function() {
+
+            }
+        },
+        //请求回调
+        callback: function(data) {
+            var html = template('tpl-user', {'list': data});
+            $("#data-container").html(html);
+        }
+    })
+</script>
+</html>

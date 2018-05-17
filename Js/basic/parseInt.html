@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var count = 0;
+    var oldParseInt = parseInt;
+    window.parseInt = function () {
+        count += 1;
+        return oldParseInt.apply(window, arguments);
+    };
+    parseInt(1);
+    parseInt(2);
+    parseInt(3);
+    alert(count);
+</script>
+</body>
+</html>

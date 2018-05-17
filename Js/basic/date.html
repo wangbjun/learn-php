@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function getNumber(num) {
+        var sum = 0;
+        var target = Math.random() * 99999999;
+        for (var i = 0; i < target; i++) {
+            sum += i;
+        }
+        return sum + '-----' + num;
+    }
+
+    console.log(getNumber(1));
+    console.log(getNumber(2));
+    console.log(getNumber(3));
+    console.log(getNumber(4));
+    console.log(getNumber(5));
+</script>
+</body>
+</html>
