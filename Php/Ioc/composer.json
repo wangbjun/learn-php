@@ -1,0 +1,15 @@
+{
+    "name": "root/ioc",
+    "authors": [
+        {
+            "name": "wangbenjun",
+            "email": "wangbenjun@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "./"
+        ]
+    },
+    "require": {}
+}
