@@ -5,6 +5,11 @@ if (!$fp) {
     var_dump("文件读取失败!\n");
 }
 
+foreach ($fp as $key => $item) {
+    $item = parse_url(trim($item))['path'];
+    $fp[$key] = preg_replace("/\/\d+/", "/*", $item);
+}
+
 $res = array_count_values($fp);
 
 uasort($res, function ($a, $b) {
@@ -13,7 +18,8 @@ uasort($res, function ($a, $b) {
 $saveFile = fopen("/home/jwang/Documents/xhprof_sort.txt", 'w+');
 
 foreach ($res as $key => $value) {
-    fwrite($saveFile, trim($key)." =================> ".$value."次\n");
+    $key = trim($key);
+    fwrite($saveFile, $key." =================> ".$value."次\n");
 }
 
 fclose($saveFile);
