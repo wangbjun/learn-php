@@ -1,8 +1,8 @@
 <?php
-define("TOTAL_PAGE", 10);   //总共多少页
+define("TOTAL_PAGE", 100);   //总共多少页
 define("MS", 2000);          //毫秒
 define("DAY", 3);            //几天内
-define("SAVE_DIR", "/home/jwang/");   //保存目录
+define("SAVE_DIR", "/home/jwang");   //保存目录
 
 $servers = [
     'mkw' => '10.100.133.99',
@@ -10,17 +10,47 @@ $servers = [
     'lj'  => '10.100.17.13',
 ];
 
+$ids = [];
+
 foreach ($servers as $key => $server) {
-    download($server, $key);
+    $ids[] = $pid = pcntl_fork();
+    if ($pid === -1) {
+        echo "failed to fork!\n";
+        exit;
+    } elseif ($pid) {
+    } else {
+        download($server, $key);
+    }
+}
+
+foreach ($ids as $i => $pid) {
+    if ($pid) {
+        pcntl_waitpid($pid, $status);
+    }
 }
 
 function download($server, $fileName)
 {
-    $file = SAVE_DIR . "xhprof.txt";
+    $saveDir = SAVE_DIR;
+    if (!is_dir(SAVE_DIR)) {
+        $saveDir = __DIR__;
+    }
+
+    $file = $saveDir . "/xhprof_{$fileName}_tmp.txt";
     $fp   = fopen($file, 'w+');
     foreach (range(1, TOTAL_PAGE) as $page) {
-        print_r("### ".date('Y-m-d H:i:s'). ": 正在爬取 $server -> $fileName 第 $page 页...\n");
-        $html = file_get_contents("http://{$server}/xhprof/index.php?page={$page}&ms=" . MS . "&day=" . DAY);
+        print_r("### " . date('Y-m-d H:i:s') . ": 正在爬取 $server -> $fileName 第 $page 页...\n");
+        try {
+            $html = file_get_contents("http://{$server}/xhprof/index.php?page={$page}&ms=" . MS . "&day=" . DAY);
+        } catch (Exception $exception) {
+            var_dump("网络请求失败!\n");
+            exit;
+        }
+        if (!$html) {
+            var_dump("网络请求失败!\n");
+            exit;
+        }
+
         preg_match_all("/<a .*>(.*)<\\/a>/", $html, $matches);
         if (isset($matches[1])) {
             if (count($matches[1]) <= 3) {
@@ -32,7 +62,7 @@ function download($server, $fileName)
         }
     }
     fclose($fp);
-    print_r("### ".date('Y-m-d H:i:s'). ": 爬取完成，开始处理数据...\n");
+    print_r("### " . date('Y-m-d H:i:s') . ": 爬取完成，开始处理数据...\n");
     print_r("---------------------------------------------------------- \n");
     $fp = file($file);
     if (!$fp) {
@@ -53,7 +83,7 @@ function download($server, $fileName)
     uasort($res, function ($a, $b) {
         return $a < $b;
     });
-    $saveFile = fopen(SAVE_DIR . "xhprof_{$fileName}.txt", 'w+');
+    $saveFile = fopen($saveDir . "/xhprof_{$fileName}.txt", 'w+');
 
     foreach ($res as $key => $value) {
         $key = trim($key);
@@ -63,4 +93,5 @@ function download($server, $fileName)
 
     fclose($saveFile);
     unlink($file);
+    exit;
 }
