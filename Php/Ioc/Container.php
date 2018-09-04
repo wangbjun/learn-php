@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Ioc;
+
 //容器类装实例或提供实例的回调函数
 class Container
 {
@@ -28,7 +29,6 @@ class Container
             $method = ($abstract == $concrete) ? 'build' : 'make';
             return $c->$method($concrete);
         };
-
     }
 
     public function make($abstract)
@@ -90,7 +90,7 @@ class Container
         foreach ($parameters as $parameter) {
             $dependency = $parameter->getClass();
             if (is_null($dependency)) {
-                $dependencies[] = NULL;
+                $dependencies[] = null;
             } else {
                 $dependencies[] = $this->resolveClass($parameter);
             }
