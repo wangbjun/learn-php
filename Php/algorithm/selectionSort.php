@@ -1,13 +1,10 @@
 <?php
 
-$arr = [91, 12, 3, 5, 9, 10, 34, 55];
-
-//系统自带函数
-//sort($arr);
+require_once 'arr.php';
 
 selectionSort($arr);
 
-var_dump($arr);
+printArr($arr);
 
 //选择排序
 function selectionSort(&$arr)
