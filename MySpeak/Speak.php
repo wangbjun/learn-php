@@ -39,7 +39,7 @@ class Speak
     {
         print_r("\nText: ".$text);
         return $this->aip_speech->synthesis($text, 'zh', 1, array(
-            'vol' => 8,
+            'vol' => 6,
             'spd' => 5
         ));
     }
