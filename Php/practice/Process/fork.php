@@ -8,6 +8,7 @@ foreach (range(1, 5) as $index) {
         echo "failed to fork!\n";
         exit;
     } elseif ($pid) {
+        $pid = posix_getpid();
         echo "I am the parent, pid: $pid\n";
     } else {
         $cid = posix_getpid();
