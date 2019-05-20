@@ -16,11 +16,20 @@ socket_listen($sock, 4);
 
 echo "Server Started, Listen On $ip:$port\n";
 
-$accept = socket_accept($sock);
+while (true) {
+    $accept = socket_accept($sock);
 
-$buf = socket_read($accept, 8192);
-echo "Receive Msg： " . $buf . "\n";
+    $buf = socket_read($accept, 8192);
 
-socket_write($accept, "Hello World!\n", 8192);
+    echo "Receive Msg： " . $buf . "\n";
 
-socket_close($sock);
+    $response = "HTTP/1.1 200 OK\r\n";
+    $response .= "Server: Socket-Http\r\n";
+    $response .= "Content-Type: text/html\r\n";
+    $response .= "Content-Length: 13\r\n\r\n";
+    $response .= "Hello World!\n";
+
+    socket_write($accept, $response, 8192);
+
+    socket_close($accept);
+}

@@ -1,6 +1,4 @@
 <?php
-namespace demo;
-
 set_time_limit(0);
 
 $port = 8888;
@@ -12,7 +10,11 @@ echo "Connecting $ip:$port\n";
 
 socket_connect($sock, $ip, $port);
 
-$input = "Hello World Socket";
+$input = json_encode([
+    'a' => 15,
+    'b' => 10,
+    'm' => '+'
+]);
 
 socket_write($sock, $input, strlen($input));
 
