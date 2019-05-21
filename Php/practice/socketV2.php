@@ -46,5 +46,5 @@ while (true) {
 
     socket_write($accept, $response, 8192);
 
-//    socket_close($accept);
+    socket_close($accept);
 }
