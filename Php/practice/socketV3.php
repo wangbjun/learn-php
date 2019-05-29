@@ -52,16 +52,16 @@ while (true) {
         }
 
         switch ($m) {
-            case '+';
+            case '+':
                 $result = $a + $b;
                 break;
-            case '-';
+            case '-':
                 $result = $a - $b;
                 break;
-            case '*';
+            case '*':
                 $result = $a * $b;
                 break;
-            case '/';
+            case '/':
                 $result = $a / $b;
                 break;
             default:

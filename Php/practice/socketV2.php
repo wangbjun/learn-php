@@ -28,16 +28,16 @@ while (true) {
     $b = $params['b'];
 
     switch ($m) {
-        case '+';
+        case '+':
             $response = $a + $b;
             break;
-        case '-';
+        case '-':
             $response = $a - $b;
             break;
-        case '*';
+        case '*':
             $response = $a * $b;
             break;
-        case '/';
+        case '/':
             $response = $a / $b;
             break;
         default:
