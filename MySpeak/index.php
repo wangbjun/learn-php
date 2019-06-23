@@ -18,7 +18,7 @@ $speak = new Speak(new AipSpeech(APP_ID, API_KEY, SECRET_KEY), new SeniverseWeat
 while (true) {
     $hour = date("H:i");
     if ($hour == "09:00" || $hour == "11:00" || $hour == "12:00" || $hour == "14:00" || $hour == "16:00" ||
-        $hour == "18:00" || $hour == "21:00" || $hour == "23:00") {
+        $hour == "18:00" || $hour == "21:00" || $hour == "22:00" || $hour == "23:00" || $hour == "00:00") {
         print_r('Speak at: ' . date("Y-m-d H:i:s"));
         $speak->run();
         sleep(3600);
