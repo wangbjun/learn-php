@@ -18,7 +18,7 @@ class Speak
     }
 
 
-    public function run()
+    public function run($text = '')
     {
         $part_one = $this->getHello();
 
@@ -26,7 +26,10 @@ class Speak
 
         $part_three = $this->weather->getWeather();
 
-        $audio = $this->getAudio($part_one.','.$part_two.$part_three);
+        if (!$text) {
+            $text = $part_one.','.$part_two.$part_three;
+        }
+        $audio = $this->getAudio($text);
 
         $file_name = '/tmp/audio.mp3';
 

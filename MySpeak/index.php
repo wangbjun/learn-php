@@ -15,6 +15,10 @@ define('W_KEY', 'm1x4jj25p8mn7yiq');
 
 $speak = new Speak(new AipSpeech(APP_ID, API_KEY, SECRET_KEY), new SeniverseWeather());
 
+if ($argc >= 2) {
+    $speak->run($argv[1]);
+    exit(0);
+}
 while (true) {
     $hour = date("H:i");
     if ($hour == "09:00" || $hour == "11:00" || $hour == "12:00" || $hour == "14:00" || $hour == "16:00" ||
