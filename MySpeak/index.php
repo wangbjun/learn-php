@@ -8,9 +8,9 @@ require 'Speak.php';
 require 'WeatherInterface.php';
 require 'SeniverseWeather.php';
 
-define('APP_ID', '9726425');
-define('API_KEY', 'T33KsWSGD9TrAVSPiL0wvPZXTXlfY7ak');
-define('SECRET_KEY', 'AWsrpSh4XIuV63rf4fGYZSTs4M7RDyov');
+define('APP_ID', '23144372');
+define('API_KEY', 'RbFQSFVTWrpH4j7sCKiVrjap');
+define('SECRET_KEY', 'Cs3H1U9YfKL0sHjkGFATZ6Sb0UnthPP7');
 define('W_KEY', 'm1x4jj25p8mn7yiq');
 
 $speak = new Speak(new AipSpeech(APP_ID, API_KEY, SECRET_KEY), new SeniverseWeather());
